@@ -46,7 +46,6 @@ except Exception as e:
 📊 Storing a Pandas DataFrame in PostgreSQL
 If you have a pre-processed Pandas DataFrame, you can store it in PostgreSQL using to_sql():
 
-
 import pandas as pd
 # Sample DataFrame
 df_cleaned = pd.DataFrame({
@@ -56,10 +55,8 @@ df_cleaned = pd.DataFrame({
     'quantity': [2, 10, 5]
 })
 
-# Store in PostgreSQL (replace the existing table if necessary)
-df_cleaned.to_sql("sales", engine, if_exists="replace", index=False)
-
-print("✅ DataFrame successfully stored in PostgreSQL!")
+# Store in PostgreSQL
+df_cleaned.to_sql("data", engine, if_exists="replace", index=False)
 
 📝 SQL Query Examples
 Using WITH AS for Stepwise Calculation
