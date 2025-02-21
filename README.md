@@ -37,34 +37,35 @@ sqlalchemy - Database operations
 
 Use SQLAlchemy to connect to PostgreSQL:
 
-from sqlalchemy import create_engine
+    from sqlalchemy import create_engine
 
-### PostgreSQL connection details
-DB_NAME = "your_database"
+    ### PostgreSQL connection details
+    DB_NAME = "your_database"
 
-USER = "your_username"
+    USER = "your_username"
 
-PASSWORD = "your_password"
+    PASSWORD = "your_password"
 
-HOST = "your_host"  # Example: 'localhost'
+    HOST = "your_host"  # Example: 'localhost'
 
-PORT = "5432"  # Default PostgreSQL port
+    PORT = "5432"  # Default PostgreSQL port
 
 ### Create database engine
-engine = create_engine(f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}')
+
+    engine = create_engine(f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}')
 
 ### Test connection
-try:
+    try:
 
-    conn = engine.connect()
+        conn = engine.connect()
 
-    print("✅ Successfully connected to PostgreSQL!")
+        print("✅ Successfully connected to PostgreSQL!")
     
-    conn.close()
+        conn.close()
 
-except Exception as e:
+    except Exception as e:
     
-    print("❌ Connection failed:", e)
+        print("❌ Connection failed:", e)
     
 📊 Storing a Pandas DataFrame in PostgreSQL
 
@@ -73,46 +74,46 @@ If you have a pre-processed Pandas DataFrame, you can store it in PostgreSQL usi
 import pandas as pd
 ### Sample DataFrame
 
-df_cleaned = pd.DataFrame({
+    df_cleaned = pd.DataFrame({
 
-    'id': [1, 2, 3],
+        'id': [1, 2, 3],
     
-    'product': ['Laptop', 'Mouse', 'Keyboard'],
+        'product': ['Laptop', 'Mouse', 'Keyboard'],
     
-    'price': [1000, 20, 50],
+        'price': [1000, 20, 50],
     
-    'quantity': [2, 10, 5]
+        'quantity': [2, 10, 5]
     
-})
+    })
 
 ## Store in PostgreSQL
-df_cleaned.to_sql("data", engine, if_exists="replace", index=False)
+    df_cleaned.to_sql("data", engine, if_exists="replace", index=False)
 
 ## 📝 SQL Query Examples
 Using WITH AS for Stepwise Calculation
 Calculate total revenue for each product and rank them based on sales:
 
-WITH revenue_table AS (
+    WITH revenue_table AS (
 
+        SELECT 
+    
+            product, 
+        
+            SUM(price * quantity) AS total_revenue
+        
+        FROM sales
+    
+        GROUP BY product
+    )
     SELECT 
-    
-        product, 
-        
-        SUM(price * quantity) AS total_revenue
-        
-    FROM sales
-    
-    GROUP BY product
-)
-SELECT 
 
-    product, 
+        product, 
     
-    total_revenue,
+        total_revenue,
     
-    RANK() OVER (ORDER BY total_revenue DESC) AS revenue_rank
+        RANK() OVER (ORDER BY total_revenue DESC) AS revenue_rank
     
-FROM revenue_table;
+    FROM revenue_table;
 
 ## 🚀 Summary
 
