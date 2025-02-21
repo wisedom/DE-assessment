@@ -38,16 +38,11 @@ sqlalchemy - Database operations
 Use SQLAlchemy to connect to PostgreSQL:
 
     from sqlalchemy import create_engine
-
-    ### PostgreSQL connection details
+    # PostgreSQL connection details
     DB_NAME = "your_database"
-
     USER = "your_username"
-
     PASSWORD = "your_password"
-
     HOST = "your_host"  # Example: 'localhost'
-
     PORT = "5432"  # Default PostgreSQL port
 
 ### Create database engine
@@ -56,15 +51,10 @@ Use SQLAlchemy to connect to PostgreSQL:
 
 ### Test connection
     try:
-
         conn = engine.connect()
-
         print("✅ Successfully connected to PostgreSQL!")
-    
         conn.close()
-
     except Exception as e:
-    
         print("❌ Connection failed:", e)
     
 📊 Storing a Pandas DataFrame in PostgreSQL
@@ -75,15 +65,10 @@ import pandas as pd
 ### Sample DataFrame
 
     df_cleaned = pd.DataFrame({
-
         'id': [1, 2, 3],
-    
         'product': ['Laptop', 'Mouse', 'Keyboard'],
-    
         'price': [1000, 20, 50],
-    
         'quantity': [2, 10, 5]
-    
     })
 
 ## Store in PostgreSQL
@@ -94,25 +79,16 @@ Using WITH AS for Stepwise Calculation
 Calculate total revenue for each product and rank them based on sales:
 
     WITH revenue_table AS (
-
         SELECT 
-    
             product, 
-        
             SUM(price * quantity) AS total_revenue
-        
         FROM sales
-    
         GROUP BY product
     )
     SELECT 
-
         product, 
-    
         total_revenue,
-    
         RANK() OVER (ORDER BY total_revenue DESC) AS revenue_rank
-    
     FROM revenue_table;
 
 ## 🚀 Summary
