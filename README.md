@@ -3,9 +3,13 @@
 This project demonstrates how to use Python with PostgreSQL for data processing, storage, querying, and statistical analysis. It supports complex SQL queries (WITH AS, window functions, JOINs, etc.) to handle large datasets efficiently.
 
 📂 Table of Contents
+
 🛠️ Installation
+
 🔗 Connecting to PostgreSQL
+
 📊 Storing a Pandas DataFrame in PostgreSQL
+
 📝 SQL Query Examples
 
 Using WITH AS for Stepwise Calculation
@@ -14,6 +18,7 @@ Complex SQL: JOIN + Statistical Analysis
 Using Window Functions to Calculate Cumulative Sales Share
 
 🛠️ Installation
+
 Run the following command to install the necessary Python libraries:
 
 pip install psycopg2 pandas sqlalchemy
@@ -22,6 +27,7 @@ pandas - Data manipulation
 sqlalchemy - Database operations
 
 🔗 Connecting to PostgreSQL
+
 Use SQLAlchemy to connect to PostgreSQL:
 
 from sqlalchemy import create_engine
