@@ -21,7 +21,7 @@ Filtering Data by Date
 Complex SQL: JOIN + Statistical Analysis
 Using Window Functions to Calculate Cumulative Sales Share
 
-🛠️ Installation
+## 🛠️ Installation
 
 Run the following command to install the necessary Python libraries:
 
@@ -30,23 +30,23 @@ psycopg2 - PostgreSQL connection
 pandas - Data manipulation
 sqlalchemy - Database operations
 
-🔗 Connecting to PostgreSQL
+## 🔗 Connecting to PostgreSQL
 
 Use SQLAlchemy to connect to PostgreSQL:
 
 from sqlalchemy import create_engine
 
-# PostgreSQL connection details
+### PostgreSQL connection details
 DB_NAME = "your_database"
 USER = "your_username"
 PASSWORD = "your_password"
 HOST = "your_host"  # Example: 'localhost'
 PORT = "5432"  # Default PostgreSQL port
 
-# Create database engine
+### Create database engine
 engine = create_engine(f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}')
 
-# Test connection
+### Test connection
 try:
     conn = engine.connect()
     print("✅ Successfully connected to PostgreSQL!")
@@ -57,7 +57,7 @@ except Exception as e:
 If you have a pre-processed Pandas DataFrame, you can store it in PostgreSQL using to_sql():
 
 import pandas as pd
-# Sample DataFrame
+### Sample DataFrame
 df_cleaned = pd.DataFrame({
     'id': [1, 2, 3],
     'product': ['Laptop', 'Mouse', 'Keyboard'],
@@ -65,10 +65,10 @@ df_cleaned = pd.DataFrame({
     'quantity': [2, 10, 5]
 })
 
-# Store in PostgreSQL
+## Store in PostgreSQL
 df_cleaned.to_sql("data", engine, if_exists="replace", index=False)
 
-📝 SQL Query Examples
+## 📝 SQL Query Examples
 Using WITH AS for Stepwise Calculation
 Calculate total revenue for each product and rank them based on sales:
 
@@ -85,7 +85,8 @@ SELECT
     RANK() OVER (ORDER BY total_revenue DESC) AS revenue_rank
 FROM revenue_table;
 
-🚀 Summary
+## 🚀 Summary
+
 ✅ Best Practices for Python + PostgreSQL:
 
 Preprocess data using Python
