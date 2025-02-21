@@ -3,15 +3,17 @@
 This project demonstrates how to use Python with PostgreSQL for data processing, storage, querying, and statistical analysis. It supports complex SQL queries (WITH AS, window functions, JOINs, etc.) to handle large datasets efficiently.
 
 
-📂 Table of Contents
+##Content
 
-🛠️ Installation
+###📂 Table of Contents
 
-🔗 Connecting to PostgreSQL
+###🛠️ Installation
 
-📊 Storing a Pandas DataFrame in PostgreSQL
+###🔗 Connecting to PostgreSQL
 
-📝 SQL Query Examples
+###📊 Storing a Pandas DataFrame in PostgreSQL
+
+###📝 SQL Query Examples
 
 
 Using WITH AS for Stepwise Calculation
